@@ -1,0 +1,26 @@
+[crate_name_overrides]
+"app_indicator3" = "appindicator3"
+
+[options]
+library = "AppIndicator3"
+version = "0.1"
+generate_builder = false
+single_version_file = true
+work_mode = "normal"
+generate = [
+    "AppIndicator3.IndicatorCategory",
+    "AppIndicator3.IndicatorStatus",
+]
+manual = [
+    "Gtk.Menu",
+    "Gtk.Widget",
+    "Gdk.ScrollDirection",
+    "Gtk.StatusIcon"
+]
+
+
+[[object]]
+name = "AppIndicator3.Indicator"
+status = "generate"
+trait_name = "AppIndicatorExt" 
+manual_traits = "AppIndicatorExtBuilder" 

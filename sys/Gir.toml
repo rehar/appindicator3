@@ -1,0 +1,17 @@
+[options]
+library = "AppIndicator3"
+version = "0.1"
+work_mode = "sys"
+min_cfg_version = "0.1"
+
+external_libraries = [
+   "GLib",
+   "GObject",
+   "Gtk",
+   "Gdk",
+   "GdkPixbuf",
+]
+
+[package]
+name = "appindicator3-sys"
+links ="appindicator3-0.1"
