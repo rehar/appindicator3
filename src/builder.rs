@@ -61,7 +61,7 @@ impl IndicatorBuilder {
     /// 
     /// # Returns
     /// 
-    /// a new instance of [`IndicatorBuilder`](crate::builders::IndicatorBuilder)
+    /// a new instance of [`IndicatorBuilder`](crate::builder::IndicatorBuilder)
     ///
     pub fn new(id: &str) -> Self {
         Self::default().id(id)
@@ -257,19 +257,19 @@ impl<O: IsA<Indicator>> AppIndicatorBuilderExt for O {
 }
 #[doc(hidden)]
 pub mod traits {
-    /// Trait containing [`IndicatorBuilder`](crate::builders::IndicatorBuilder) constructor methods.
+    /// Trait containing [`IndicatorBuilder`](crate::builder::IndicatorBuilder) constructor methods.
     pub trait AppIndicatorBuilderExt {
         // rustdoc-stripper-ignore-next
         /// Creates a new builder-pattern struct instance to construct [`Indicator`](crate::auto::Indicator) objects.
         ///
-        /// This method returns an instance of [`IndicatorBuilder`](crate::builders::IndicatorBuilder) which can be used to create [`Indicator`](crate::auto::Indicator) objects.
+        /// This method returns an instance of [`IndicatorBuilder`](crate::builder::IndicatorBuilder) which can be used to create [`Indicator`](crate::auto::Indicator) objects.
         ///
         /// ## `id`
         /// The unique id of the indicator to create.
         /// 
         /// # Returns
         /// 
-        /// a new instance of [`IndicatorBuilder`](crate::builders::IndicatorBuilder)
+        /// a new instance of [`IndicatorBuilder`](crate::builder::IndicatorBuilder)
         ///
         fn builder(id: &str) -> crate::IndicatorBuilder;
     }

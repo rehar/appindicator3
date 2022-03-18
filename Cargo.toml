@@ -7,7 +7,7 @@ description = "Rust bindings for the AppIndicator and AyatanaAppIndicator librar
 author = "Rene Harder"
 version = "0.1.0"
 edition = "2021"
-keywords = ["appindicator", "libappindicator", "ayatana-appindicator", "libayatana-appindicator", "SNI", "KSNI"]
+keywords = ["appindicator", "libappindicator", "ayatana-appindicator", "SNI", "KSNI"]
 
 exclude = [
     "gir-files/*",
@@ -39,6 +39,7 @@ branch = "0.15"
 
 [dependencies.ffi]
 package = "appindicator3-sys"
+version = "0.0.1"
 path = "sys/" 
 
 [dependencies.gdk-sys]
