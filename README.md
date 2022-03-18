@@ -15,14 +15,14 @@ Add the following to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-appindicator3 = "0.1.0"
+appindicator3 = "0.2.0"
 ```
 
 By default `appindicator3-rs` links against the libayatana-appindicator3 library. To link against the original libappindicator3 library enable the original feature:
 
 ```toml
 [dependencies]
-appindicator3 = { version = "0.1.0", feature = ["original", "v0_5"] }
+appindicator3 = { version = "0.2.0", feature = ["original", "v0_5"] }
 
 ```
 

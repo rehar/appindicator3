@@ -12,7 +12,7 @@
 //! ```toml
 //! [dependencies]
 //! gtk = "0.15"
-//! appindicator3 = "0.1.0"
+//! appindicator3 = "0.2.0"
 //! ```
 //! 
 //! Next:
