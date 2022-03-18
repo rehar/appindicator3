@@ -114,6 +114,10 @@ impl IndicatorBuilder {
             object.set_menu(Some(menu));
         }
 
+        if let Some(ref widget) = self.secondary_widget {
+            object.set_secondary_activate_target(Some(widget));
+        }
+
         object
     }
 
