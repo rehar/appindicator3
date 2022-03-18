@@ -34,7 +34,7 @@ impl Default for IndicatorBuilder {
         Self {
             attention_icon_desc: None,
             attention_icon_name: None,
-            category: IndicatorCategory::Other.nick().to_string(),
+            category: IndicatorCategory::Other.nick(),
             icon_desc: None,
             icon_name: None,
             icon_theme_path: None,
@@ -71,11 +71,9 @@ impl IndicatorBuilder {
     /// Build the [`Indicator`].
     #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
     pub fn build(self) -> Indicator {
-        let mut properties: Vec<(&str, &dyn ToValue)> = vec![];
+        // properties initalize with mandatory ones
+        let mut properties: Vec<(&str, &dyn ToValue)> = vec![("id", &self.id), ("category", &self.category)];
 
-        // mandatory properties
-        properties.push(("id", &self.id));
-        properties.push(("category", &self.category));
         
         if let Some(ref attention_icon_desc) = self.attention_icon_desc {
             properties.push(("attention-icon-desc", attention_icon_desc));
@@ -144,7 +142,7 @@ impl IndicatorBuilder {
     /// ## `category`
     /// The category of indicator.
     pub fn category(mut self, category: IndicatorCategory) -> Self {
-        self.category = category.nick().to_string();
+        self.category = category.nick();
         self
     }
 
@@ -204,7 +202,7 @@ impl IndicatorBuilder {
     /// ## `status`
     /// The status to set for this indicator
     pub fn status(mut self, status: IndicatorStatus) -> Self {
-        self.status = Some(status.nick().to_string());
+        self.status = Some(status.nick());
         self
     }
 

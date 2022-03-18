@@ -10,12 +10,7 @@ fn main() -> Result<(), glib::BoolError>  {
     gtk::init()?;
 
     let icon_path = Path::new(env!("CARGO_MANIFEST_DIR")).join("examples");
-    let m = gtk::Menu::builder()
-        .tooltip_text("tooltip_text")
-        .opacity(0.5)
-        .name("name")
-        .width_request(500)
-        .build();
+    let m = gtk::Menu::new();
 
     let mi = gtk::MenuItem::with_label("Attention");
     m.append(&mi);
