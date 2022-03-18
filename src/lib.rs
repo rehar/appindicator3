@@ -1,3 +1,4 @@
+#![cfg_attr(feature = "dox", feature(doc_cfg))]
 //! Rust bindings for the AppIndicator and AyatanaAppIndicator libraries. 
 //! 
 //! Allows applications to export a menu into the an Application Indicators aware menu bar. 
