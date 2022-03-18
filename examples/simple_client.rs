@@ -131,7 +131,7 @@ fn main() -> Result<(), glib::BoolError> {
     
 
     let item = gtk::MenuItem::with_label("Get Attention");
-    let mut active_flag = Rc::new(Cell::new(false));
+    let active_flag = Rc::new(Cell::new(false));
     item.connect_activate(glib::clone!(@weak indicator, @weak active_flag => move |item| {
         if active_flag.get() {
             indicator.set_status(IndicatorStatus::Attention);
