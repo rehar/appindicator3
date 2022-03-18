@@ -3,6 +3,10 @@ name = "appindicator3-sys"
 version = "0.0.1"
 edition = "2021"
 build = "build.rs"
+license = "MIT"
+description = "FFI bindings for the AppIndicator and AyatanaAppIndicator library"
+keywords = ["ffi"]
+repository = "https://github.com/rehar/appindicator3"
 
 [package.metadata.docs.rs]
 features = ["dox"]

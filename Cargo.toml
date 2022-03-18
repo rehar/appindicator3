@@ -1,7 +1,17 @@
 [package]
 name = "appindicator3"
+categories = ["api-bindings", "gui"]
+repository = "https://github.com/rehar/appindicator3"
+license = "MIT"
+description = "Rust bindings for the AppIndicator and AyatanaAppIndicator library"
+author = "Rene Harder"
 version = "0.1.0"
 edition = "2021"
+keywords = ["appindicator", "libappindicator", "ayatana-appindicator", "libayatana-appindicator", "SNI", "KSNI"]
+
+exclude = [
+    "gir-files/*",
+]
 
 [lib]
 name = "appindicator3"
@@ -12,19 +22,19 @@ libc = "0.2"
 [dependencies.glib]
 package = "glib"
 git = "https://github.com/gtk-rs/gtk-rs-core"
-version = "0.15.1"
+version = "0.15"
 branch = "0.15"
 
 [dependencies.gtk]
 package = "gtk"
 git = "https://github.com/gtk-rs/gtk3-rs"
-version = "0.15.1"
+version = "0.15"
 branch = "0.15"
 
 [dependencies.gdk]
 package = "gdk"
 git = "https://github.com/gtk-rs/gtk3-rs"
-version = "0.15.1"
+version = "0.15"
 branch = "0.15"
 
 [dependencies.ffi]
@@ -34,7 +44,7 @@ path = "sys/"
 [dependencies.gdk-sys]
 package = "gdk-sys"
 git = "https://github.com/gtk-rs/gtk3-rs"
-version = "0.15.1"
+version = "0.15"
 branch = "0.15"
 
 [features]
