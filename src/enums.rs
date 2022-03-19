@@ -1,11 +1,6 @@
 use glib::{translate::*, StaticType, Type, ToValue, value::FromValue, EnumClass};
 use crate::{IndicatorCategory, IndicatorStatus};
-
-/// Trait for retrieving an enum nickname.
-pub trait IndicatorEnumNickname {
-    /// Get nick corresponding to the enum.
-    fn nick(&self) -> String;
-}
+use self::traits::AppIndicatorEnumNickname;
 
 impl StaticType for IndicatorCategory {
     fn static_type() -> Type {
@@ -40,7 +35,7 @@ unsafe impl<'a> FromValue<'a> for IndicatorCategory {
     }
 }
 
-impl IndicatorEnumNickname for IndicatorCategory {
+impl AppIndicatorEnumNickname for IndicatorCategory {
     fn nick(&self) -> String {
         EnumClass::new(self.value_type()).unwrap().value(self.into_glib()).unwrap().nick().to_owned()
     }
@@ -79,8 +74,17 @@ unsafe impl<'a> FromValue<'a> for IndicatorStatus {
     }
 }
 
-impl IndicatorEnumNickname for IndicatorStatus {
+impl AppIndicatorEnumNickname for IndicatorStatus {
     fn nick(&self) -> String {
         EnumClass::new(self.value_type()).unwrap().value(self.into_glib()).unwrap().nick().to_owned()
+    }
+}
+
+#[doc(hidden)]
+pub mod traits {
+    /// Trait for retrieving an enum nickname.
+    pub trait AppIndicatorEnumNickname {
+        /// Get nick corresponding to the enum.
+        fn nick(&self) -> String;
     }
 }

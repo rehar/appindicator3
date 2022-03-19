@@ -1,7 +1,7 @@
 use std::path::Path;
 
 use appindicator3::prelude::*;
-use appindicator3::{traits::AppIndicatorExt, Indicator, IndicatorCategory, IndicatorStatus};
+use appindicator3::{Indicator, IndicatorCategory, IndicatorStatus};
 use gtk::prelude::*;
 
 const APP_NAME: &str = "AppIndicator Builder Example";

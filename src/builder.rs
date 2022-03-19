@@ -2,7 +2,7 @@
 //! Builder pattern types.
 
 use glib::{ToValue, IsA};
-use crate::{Indicator, prelude::*, IndicatorCategory, IndicatorEnumNickname, IndicatorStatus};
+use crate::{Indicator, prelude::*, IndicatorCategory, IndicatorStatus};
 
 
 

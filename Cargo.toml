@@ -5,7 +5,7 @@ repository = "https://github.com/rehar/appindicator3"
 license = "MIT"
 description = "Rust bindings for the AppIndicator and AyatanaAppIndicator library"
 author = "Rene Harder"
-version = "0.2.1"
+version = "0.2.2"
 edition = "2021"
 keywords = ["appindicator", "libappindicator", "ayatana-appindicator", "SNI", "KSNI"]
 
