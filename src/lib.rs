@@ -18,6 +18,9 @@
 //! Next:
 //! 
 //! ```rust
+//! use gtk::prelude::*;
+//! use appindicator3::{Indicator, IndicatorCategory, IndicatorStatus, prelude::*};
+//! 
 //! fn main() {
 //!     gtk::init().unwrap();
 //!
