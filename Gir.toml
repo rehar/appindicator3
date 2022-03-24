@@ -24,4 +24,4 @@ manual = [
 name = "AppIndicator3.Indicator"
 status = "generate"
 trait_name = "AppIndicatorExt" 
-manual_traits = "AppIndicatorExtBuilder" 
+manual_traits = ["AppIndicatorExtBuilder"] 
