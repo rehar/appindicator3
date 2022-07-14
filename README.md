@@ -26,6 +26,16 @@ appindicator3 = { version = "0.2.0", feature = ["original", "v0_5"] }
 
 ```
 
+### Dependencies
+
+You will need the the development packages for libayatana-appindicator3 to compile aginst this library.
+
+Debian:
+
+```shell
+sudo apt install libayatana-appindicator3-dev
+```
+
 ### Example Program
 
 ```rust
