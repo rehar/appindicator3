@@ -1,6 +1,6 @@
 [package]
 name = "appindicator3-sys"
-version = "0.0.3"
+version = "0.0.4"
 edition = "2021"
 build = "build.rs"
 license = "MIT"
@@ -19,19 +19,19 @@ libc = "0.2"
 
 [dependencies.glib]
 package = "glib-sys"
-version = "0.15"
+version = "0.18"
 
 [dependencies.gobject]
 package = "gobject-sys"
-version = "0.15"
+version = "0.18"
 
 [dependencies.gtk]
 package = "gtk-sys"
-version = "0.15"
+version = "0.18"
 
 [dependencies.gdk]
 package = "gdk-sys"
-version = "0.15"
+version = "0.18"
 
 [build-dependencies]
 pkg-config = "0.3.24"

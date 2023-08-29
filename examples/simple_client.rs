@@ -1,7 +1,7 @@
 use std::{cell::Cell, rc::Rc, path::Path};
 
 use appindicator3::{Indicator, prelude::AppIndicatorExt, IndicatorStatus, IndicatorCategory};
-use gdk::gio::{Icon};
+use gdk::gio::Icon;
 use gtk::{prelude::*, MenuItem};
 
 const CAN_HAZ_LABEL: bool = true;
@@ -77,7 +77,7 @@ fn main() -> Result<(), glib::BoolError> {
         }
     });
 
-    glib::timeout_add_seconds_local(1, glib::clone!(@weak indicator, @weak can_haz_label => @default-return glib::Continue(false), move || {
+    glib::timeout_add_seconds_local(1, glib::clone!(@weak indicator, @weak can_haz_label => @default-return glib::ControlFlow::Break, move || {
         percentage = (percentage + 1.0) % 100.0;
         if can_haz_label.get() {
             let percentstr = format!("{:.2}", percentage + 1.0);
@@ -85,7 +85,7 @@ fn main() -> Result<(), glib::BoolError> {
         } else {
              indicator.set_label("", "");
         }
-        glib::Continue(true)
+        glib::ControlFlow::Continue
     }));
 
 

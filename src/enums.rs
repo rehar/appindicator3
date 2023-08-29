@@ -37,7 +37,7 @@ unsafe impl<'a> FromValue<'a> for IndicatorCategory {
 
 impl AppIndicatorEnumNickname for IndicatorCategory {
     fn nick(&self) -> String {
-        EnumClass::new(self.value_type()).unwrap().value(self.into_glib()).unwrap().nick().to_owned()
+        EnumClass::with_type(self.value_type()).unwrap().value(self.into_glib()).unwrap().nick().to_owned()
     }
 }
 
@@ -76,7 +76,7 @@ unsafe impl<'a> FromValue<'a> for IndicatorStatus {
 
 impl AppIndicatorEnumNickname for IndicatorStatus {
     fn nick(&self) -> String {
-        EnumClass::new(self.value_type()).unwrap().value(self.into_glib()).unwrap().nick().to_owned()
+        EnumClass::with_type(self.value_type()).unwrap().value(self.into_glib()).unwrap().nick().to_owned()
     }
 }
 

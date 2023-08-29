@@ -5,7 +5,7 @@ repository = "https://github.com/rehar/appindicator3"
 license = "MIT"
 description = "Rust bindings for the AppIndicator and AyatanaAppIndicator library"
 author = "Rene Harder"
-version = "0.2.3"
+version = "0.3.0"
 edition = "2021"
 keywords = ["appindicator", "libappindicator", "ayatana-appindicator", "SNI", "KSNI"]
 
@@ -18,14 +18,14 @@ name = "appindicator3"
 
 [dependencies]
 libc = "0.2"
-glib = "0.15"
-gtk = "0.15"
-gdk = "0.15"
-gdk-sys = "0.15"
+glib = "0.18"
+gtk = "0.18"
+gdk = "0.18"
+gdk-sys = "0.18"
 
 [dependencies.ffi]
 package = "appindicator3-sys"
-version = "0.0.3"
+version = "0.0.4"
 path = "sys/" 
 
 [features]

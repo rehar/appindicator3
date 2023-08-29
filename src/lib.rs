@@ -11,8 +11,8 @@
 //!
 //! ```toml
 //! [dependencies]
-//! gtk = "0.15"
-//! appindicator3 = "0.2.0"
+//! gtk = "0.18"
+//! appindicator3 = "0.3"
 //! ```
 //! 
 //! Next:
@@ -49,8 +49,7 @@ pub use glib;
 mod auto;
 mod builder;
 pub mod prelude;
-mod enums;
+pub mod enums;
 
 pub use crate::auto::*;
 pub use crate::builder::IndicatorBuilder;
-pub use crate::enums::*;

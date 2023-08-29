@@ -1,12 +1,9 @@
 // rustdoc-stripper-ignore-next
 //! Builder pattern types.
 
-use glib::{ToValue, IsA};
-use crate::{Indicator, prelude::*, IndicatorCategory, IndicatorStatus};
+use crate::{prelude::*, Indicator, IndicatorCategory, IndicatorStatus};
+use glib::IsA;
 
-
-
-#[derive(Clone)]
 // rustdoc-stripper-ignore-next
 /// A [builder-pattern] type to construct [`Indicator`] objects.
 ///
@@ -27,6 +24,7 @@ pub struct IndicatorBuilder {
     title: Option<String>,
     menu: Option<gtk::Menu>,
     secondary_widget: Option<gtk::Widget>,
+    builder: glib::object::ObjectBuilder<'static, Indicator>,
 }
 
 impl Default for IndicatorBuilder {
@@ -46,7 +44,7 @@ impl Default for IndicatorBuilder {
             title: None,
             menu: None,
             secondary_widget: None,
-             
+            builder: glib::object::Object::builder(),
         }
     }
 }
@@ -58,9 +56,9 @@ impl IndicatorBuilder {
     ///
     /// ## `id`
     /// The unique id of the indicator to create.
-    /// 
+    ///
     /// # Returns
-    /// 
+    ///
     /// a new instance of [`IndicatorBuilder`](crate::builder::IndicatorBuilder)
     ///
     pub fn new(id: &str) -> Self {
@@ -72,41 +70,42 @@ impl IndicatorBuilder {
     #[must_use = "Building the object from the builder is usually expensive and is not expected to have side effects"]
     pub fn build(self) -> Indicator {
         // properties initalize with mandatory ones
-        let mut properties: Vec<(&str, &dyn ToValue)> = vec![("id", &self.id), ("category", &self.category)];
+        let mut builder = self
+            .builder
+            .property("id", self.id)
+            .property("category", self.category);
 
-        
         if let Some(ref attention_icon_desc) = self.attention_icon_desc {
-            properties.push(("attention-icon-desc", attention_icon_desc));
-        }
+            builder = builder.property("attention-icon-desc", attention_icon_desc)
+        };
         if let Some(ref attention_icon_name) = self.attention_icon_name {
-            properties.push(("attention-icon-name", attention_icon_name));
+            builder = builder.property("attention-icon-name", attention_icon_name);
         }
         if let Some(ref icon_desc) = self.icon_desc {
-            properties.push(("icon-desc", icon_desc));
+            builder = builder.property("icon-desc", icon_desc);
         }
         if let Some(ref icon_name) = self.icon_name {
-            properties.push(("icon-name", icon_name));
+            builder = builder.property("icon-name", icon_name);
         }
         if let Some(ref icon_theme_path) = self.icon_theme_path {
-            properties.push(("icon-theme-path", icon_theme_path));
+            builder = builder.property("icon-theme-path", icon_theme_path);
         }
         if let Some(ref label) = self.label {
-            properties.push(("label", label));
+            builder = builder.property("label", label);
         }
         if let Some(ref label_guide) = self.label_guide {
-            properties.push(("label-guide", label_guide));
+            builder = builder.property("label-guide", label_guide);
         }
         if let Some(ref ordering_index) = self.ordering_index {
-            properties.push(("ordering-index", ordering_index));
+            builder = builder.property("ordering-index", ordering_index);
         }
         if let Some(ref status) = self.status {
-            properties.push(("status", status));
+            builder = builder.property("status", status);
         }
         if let Some(ref title) = self.title {
-            properties.push(("title", title));
+            builder = builder.property("title", title);
         }
-        let object = glib::Object::new::<Indicator>(&properties)
-            .expect("Failed to create an instance of Indicator");
+        let object = builder.build();
 
         if let Some(ref menu) = self.menu {
             object.set_menu(Some(menu));
@@ -121,7 +120,7 @@ impl IndicatorBuilder {
 
     #[doc(hidden)]
     /// Function to set the internal indicator id
-    fn id(mut self, id: &str) -> Self{
+    fn id(mut self, id: &str) -> Self {
         self.id = id.to_string();
         self
     }
@@ -133,7 +132,7 @@ impl IndicatorBuilder {
     /// A textual description of the icon
     pub fn attention_icon(mut self, icon_name: &str, icon_desc: &str) -> Self {
         self.attention_icon_desc = Some(icon_desc.to_string());
-        self.attention_icon_name =  Some(icon_name.to_string());
+        self.attention_icon_name = Some(icon_name.to_string());
         self
     }
 
@@ -245,8 +244,8 @@ impl IndicatorBuilder {
     /// ## `menuitem`
     /// A [`gtk::Widget`][crate::gtk::Widget] to be activated on secondary activation
     pub fn secondary_activate_target(mut self, menuitem: &impl IsA<gtk::Widget>) -> Self {
-         self.secondary_widget = Some(menuitem.as_ref().clone());
-         self
+        self.secondary_widget = Some(menuitem.as_ref().clone());
+        self
     }
 }
 
@@ -266,9 +265,9 @@ pub mod traits {
         ///
         /// ## `id`
         /// The unique id of the indicator to create.
-        /// 
+        ///
         /// # Returns
-        /// 
+        ///
         /// a new instance of [`IndicatorBuilder`](crate::builder::IndicatorBuilder)
         ///
         fn builder(id: &str) -> crate::IndicatorBuilder;
